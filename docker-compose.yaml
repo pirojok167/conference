@@ -8,4 +8,4 @@ services:
       POSTGRES_PASSWORD: main
       POSTGRES_DB: main
     ports:
-      - "5432"
+      - "49153:5432"
