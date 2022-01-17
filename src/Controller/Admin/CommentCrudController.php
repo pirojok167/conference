@@ -23,7 +23,6 @@ class CommentCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Conference Comments')
             ->setSearchFields(['author', 'text', 'email'])
             ->setDefaultSort(['createdAt' => 'DESC']);
-        ;
     }
 
     public function configureFilters(Filters $filters): Filters

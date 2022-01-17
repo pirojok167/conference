@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
+use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
-#[ORM\HasLifecycleCallbacks()]
+#[ORM\HasLifecycleCallbacks]
 class Comment
 {
     #[ORM\Id]
@@ -39,6 +41,7 @@ class Comment
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $photoFilename;
 
+    #[Pure]
     public function __toString(): string
     {
         return (string) $this->getEmail();
@@ -100,7 +103,7 @@ class Comment
     #[ORM\PrePersist]
     public function setCreatedAtValue(): void
     {
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getConference(): ?Conference
