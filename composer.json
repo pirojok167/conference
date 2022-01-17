@@ -87,7 +87,7 @@
         "symfony": {
             "allow-contrib": "true",
             "docker": false,
-            "require": "5.2.*"
+            "require": "5.*"
         }
     }
 }
