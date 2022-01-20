@@ -61,7 +61,7 @@ class ConferenceController extends AbstractController
             'conferences' => $conferenceRepository->findAll(),
         ]));
 
-        $response->setSharedMaxAge(3600);
+//        $response->setSharedMaxAge(3600);
 
         return $response;
     }
