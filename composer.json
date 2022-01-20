@@ -24,6 +24,7 @@
         "symfony/messenger": "5.*",
         "symfony/mime": "5.4.*",
         "symfony/monolog-bundle": "^3.7",
+        "symfony/notifier": "5.*",
         "symfony/process": "5.*",
         "symfony/proxy-manager-bridge": "5.4.*",
         "symfony/security-bundle": "5.4.*",
