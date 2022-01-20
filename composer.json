@@ -29,7 +29,9 @@
         "symfony/validator": "5.4.*",
         "symfony/workflow": "5.*",
         "symfony/yaml": "5.4.*",
+        "twig/cssinliner-extra": "^3",
         "twig/extra-bundle": "^3.0",
+        "twig/inky-extra": "^3",
         "twig/intl-extra": "^3",
         "twig/twig": "^3"
     },

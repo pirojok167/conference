@@ -9,3 +9,7 @@ services:
       POSTGRES_DB: main
     ports:
       - "49153:5432"
+
+  mailer:
+      image: schickling/mailcatcher
+      ports: [ "1025", "1080" ]
