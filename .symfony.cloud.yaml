@@ -5,6 +5,7 @@ type: php:8.0
 runtime:
     extensions:
         - apcu
+        - amqp
         - mbstring
         - sodium
         - ctype
@@ -20,6 +21,11 @@ build:
     flavor: none
 
 disk: 512
+
+relationships:
+    database: "db:postgresql"
+    redis: "rediscache:redis"
+    rabbitmq: "queue:rabbitmq"
 
 web:
     locations:
