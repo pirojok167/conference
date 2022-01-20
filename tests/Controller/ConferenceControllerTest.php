@@ -11,7 +11,7 @@ class ConferenceControllerTest extends WebTestCase
     public function testSomething(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/');
+        $client->request('GET', '/ru/');
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h2', 'Give your feedback!');
@@ -22,7 +22,7 @@ class ConferenceControllerTest extends WebTestCase
         $email = 'nme@loopstation.uk';
 
         $client = static::createClient();
-        $client->request('GET', '/conference/voronezh-2022');
+        $client->request('GET', '/ru/conference/voronezh-2022');
         $client->submitForm('Submit', [
             'comment_form[author]' => 'Alex',
             'comment_form[text]' => 'Some feedback from an automated functional test',
@@ -44,7 +44,7 @@ class ConferenceControllerTest extends WebTestCase
     public function testConferencePage(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/ru/');
 
         $this->assertCount(2, $crawler->filter('li'));
 
