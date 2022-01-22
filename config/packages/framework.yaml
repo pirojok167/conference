@@ -16,17 +16,12 @@ framework:
     php_errors:
         log: true
 
-<<<<<<< ours
     http_cache: true
 
-=======
->>>>>>> theirs
+
 when@test:
     framework:
         test: true
         session:
-<<<<<<< ours
             storage_factory_id: session.storage.factory.mock_file
-=======
-            storage_factory_id: session.storage.factory.mock_file
->>>>>>> theirs
+

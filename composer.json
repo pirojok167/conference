@@ -37,6 +37,7 @@
         "symfony/property-access": "5.*",
         "symfony/property-info": "5.*",
         "symfony/proxy-manager-bridge": "6.0.*",
+        "symfony/runtime": "5.*",
         "symfony/security-bundle": "6.0.*",
         "symfony/serializer": "5.*",
         "symfony/string": "6.0.*",
@@ -68,7 +69,8 @@
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
-            "symfony/flex": true
+            "symfony/flex": true,
+            "symfony/runtime": true
         },
         "optimize-autoloader": true,
         "preferred-install": {
