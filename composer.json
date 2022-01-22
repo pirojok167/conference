@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.0.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/core": "^2.6",
@@ -60,7 +60,7 @@
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.0.*",
         "symfony/css-selector": "6.0.*",
-        "symfony/debug-bundle": "6.0.*",
+        "symfony/debug-bundlre": "6.0.*",
         "symfony/maker-bundle": "^1.36",
         "symfony/phpunit-bridge": "^6.0",
         "symfony/stopwatch": "6.0.*",
@@ -91,8 +91,12 @@
     "replace": {
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*"
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*"
     },
+
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
@@ -110,9 +114,14 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": "true",
-            "docker": false,
-            "require": "5.*"
+            "allow-contrib": false,
+            "require": "6.0.*"
         }
+    },
+    "require-dev": {
+        "symfony/debug-bundle": "6.0.*",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/stopwatch": "6.0.*",
+        "symfony/web-profiler-bundle": "6.0.*"
     }
 }
