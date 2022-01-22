@@ -19,37 +19,17 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class CommentMessageHandler implements MessageHandlerInterface
 {
-    private SpamChecker $spamChecker;
-    private EntityManagerInterface $entityManager;
-    private CommentRepository $commentRepository;
-    private MessageBusInterface $messageBus;
-    private WorkflowInterface $commentStateMachine;
-    private LoggerInterface $logger;
-    private NotifierInterface $notifier;
-    private ImageOptimizer $imageOptimizer;
-    private string $photoDir;
-
     public function __construct(
-        EntityManagerInterface $entityManager,
-        SpamChecker $spamChecker,
-        CommentRepository $commentRepository,
-        MessageBusInterface $messageBus,
-        WorkflowInterface $commentStateMachine,
-        NotifierInterface $notifier,
-        ImageOptimizer $imageOptimizer,
-        string $photoDir,
-        LoggerInterface $logger = null
-    ) {
-        $this->entityManager = $entityManager;
-        $this->spamChecker = $spamChecker;
-        $this->commentRepository = $commentRepository;
-        $this->messageBus = $messageBus;
-        $this->commentStateMachine = $commentStateMachine;
-        $this->notifier = $notifier;
-        $this->logger = $logger;
-        $this->photoDir = $photoDir;
-        $this->imageOptimizer = $imageOptimizer;
-    }
+        private EntityManagerInterface $entityManager,
+        private SpamChecker            $spamChecker,
+        private CommentRepository      $commentRepository,
+        private MessageBusInterface    $messageBus,
+        private WorkflowInterface      $commentStateMachine,
+        private NotifierInterface      $notifier,
+        private ImageOptimizer         $imageOptimizer,
+        private string                 $photoDir,
+        private ?LoggerInterface       $logger = null
+    ) {}
 
     /**
      * @throws TransportExceptionInterface

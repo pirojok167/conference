@@ -13,22 +13,20 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Workflow\Registry;
-use Twig\Environment;
 
 #[Route('/admin')]
 class AdminController extends AbstractController
 {
-    private Environment $twig;
     private EntityManagerInterface $entityManager;
     private MessageBusInterface $bus;
 
-    public function __construct(Environment $twig, EntityManagerInterface $entityManager, MessageBusInterface $bus)
+    public function __construct(EntityManagerInterface $entityManager, MessageBusInterface $bus)
     {
-        $this->twig = $twig;
         $this->entityManager = $entityManager;
         $this->bus = $bus;
     }
 
+    /** @noinspection PhpUnused */
     #[Route('/comment/review/{id}', name: 'review_comment')]
     public function reviewComment(Request $request, Comment $comment, Registry $registry): Response
     {

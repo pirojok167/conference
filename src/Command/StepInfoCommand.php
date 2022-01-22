@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -12,15 +13,14 @@ class StepInfoCommand extends Command
 {
     protected static $defaultName = 'app:step:info';
 
-    private CacheInterface $cache;
-
-    public function __construct(CacheInterface $cache)
+    public function __construct(private CacheInterface $cache)
     {
-        $this->cache = $cache;
-
         parent::__construct();
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $step = $this->cache->get('app.current_step', function ($item) {
@@ -29,6 +29,7 @@ class StepInfoCommand extends Command
             $item->expiresAfter(30);
             return $process->getOutput();
         });
+
         $output->writeln($step);
 
         return 0;

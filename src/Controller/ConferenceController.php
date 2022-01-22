@@ -8,10 +8,8 @@ use App\Form\CommentFormType;
 use App\Message\CommentMessage;
 use App\Repository\CommentRepository;
 use App\Repository\ConferenceRepository;
-use App\SpamChecker;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
-use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,15 +26,12 @@ use Twig\Error\SyntaxError;
 
 class ConferenceController extends AbstractController
 {
-    private Environment $twig;
-    private EntityManagerInterface $entityManager;
-    private MessageBusInterface $messageBus;
 
-    public function __construct(Environment $twig, EntityManagerInterface $entityManager, MessageBusInterface $messageBus)
+    public function __construct(
+        private Environment $twig,
+        private EntityManagerInterface $entityManager,
+        private MessageBusInterface $messageBus)
     {
-        $this->twig = $twig;
-        $this->entityManager = $entityManager;
-        $this->messageBus = $messageBus;
     }
 
     #[Route('/')]
@@ -62,6 +57,11 @@ class ConferenceController extends AbstractController
         return $response;
     }
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     #[Route('/{_locale<%app.supported_locales%>}/conference_header', name: 'conference_header')]
     public function conferenceHeader(ConferenceRepository $conferenceRepository): Response
     {
@@ -69,7 +69,7 @@ class ConferenceController extends AbstractController
             'conferences' => $conferenceRepository->findAll(),
         ]));
 
-//        $response->setSharedMaxAge(3600);
+        $response->setSharedMaxAge(3600);
 
         return $response;
     }

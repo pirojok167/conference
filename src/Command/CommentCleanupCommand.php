@@ -18,14 +18,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class CommentCleanupCommand extends Command
 {
-    private CommentRepository $commentRepository;
-
     protected static $defaultName = 'app:comment:cleanup';
 
-    public function __construct(CommentRepository $commentRepository)
+    public function __construct(private CommentRepository $commentRepository)
     {
-        $this->commentRepository = $commentRepository;
-
         parent::__construct();
     }
 
@@ -53,7 +49,7 @@ class CommentCleanupCommand extends Command
             $count = $this->commentRepository->deleteOldRejected();
         }
 
-        $io->success(sprintf('Deleted "%d" old rejected/spam comments.', $count));
+        $io->success("Deleted $count old rejected/spam comments.");
 
         return 0;
     }

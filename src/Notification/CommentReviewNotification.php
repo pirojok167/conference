@@ -3,6 +3,7 @@
 namespace App\Notification;
 
 use App\Entity\Comment;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Notifier\Message\EmailMessage;
 use Symfony\Component\Notifier\Notification\EmailNotificationInterface;
 use Symfony\Component\Notifier\Notification\Notification;
@@ -10,12 +11,9 @@ use Symfony\Component\Notifier\Recipient\EmailRecipientInterface;
 
 class CommentReviewNotification extends Notification implements EmailNotificationInterface
 {
-    private Comment $comment;
-
-    public function __construct(Comment $comment)
+    #[Pure]
+    public function __construct(private Comment $comment)
     {
-        $this->comment = $comment;
-
         parent::__construct('New comment posted');
     }
 
@@ -24,8 +22,7 @@ class CommentReviewNotification extends Notification implements EmailNotificatio
         $message = EmailMessage::fromNotification($this, $recipient, $transport);
         $message->getMessage()
             ->htmlTemplate('emails/comment_notification.html.twig')
-            ->context(['comment' => $this->comment])
-        ;
+            ->context(['comment' => $this->comment]);
 
         return $message;
     }

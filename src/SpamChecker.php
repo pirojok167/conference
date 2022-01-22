@@ -9,12 +9,10 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SpamChecker
 {
-    private HttpClientInterface $client;
     private string $endpoint;
 
-    public function __construct(HttpClientInterface $client, string $akismetKey)
+    public function __construct(private HttpClientInterface $client, string $akismetKey)
     {
-        $this->client = $client;
         $this->endpoint = sprintf('https://%s.rest.akismet.com/1.1/comment-check', $akismetKey);
     }
 

@@ -12,13 +12,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppFixtures extends Fixture
 {
-    private UserPasswordHasherInterface $passwordHasher;
-    private SluggerInterface $slugger;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher, SluggerInterface $slugger)
+    public function __construct(private UserPasswordHasherInterface $passwordHasher, private SluggerInterface $slugger)
     {
-        $this->passwordHasher = $passwordHasher;
-        $this->slugger = $slugger;
     }
 
     public function load(ObjectManager $manager): void
