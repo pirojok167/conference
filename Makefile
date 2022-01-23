@@ -14,3 +14,6 @@ workers-run: workers-stop
 
 workers-stop:
 	symfony console messenger:stop-workers
+
+encore:
+	symfony run -d yarn encore dev --watch
